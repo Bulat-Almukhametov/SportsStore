@@ -25,9 +25,9 @@ namespace SportsStore.WebUI.Infrastructure
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup(m => m.Products).Returns(new List<Product>
             {
-                new Product {Name = "Football", Price = 25},
-                new Product {Name = "Surf board", Price = 179},
-                new Product {Name = "Running shoes", Price = 95}
+                new Product {Name = "Футболка", Price = 25},
+                new Product {Name = "Доска для сёрфинга", Price = 179},
+                new Product {Name = "Беговые кеды", Price = 95}
 
             }.AsQueryable());
 
