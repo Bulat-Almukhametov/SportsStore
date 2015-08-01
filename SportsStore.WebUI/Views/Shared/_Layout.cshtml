@@ -4,13 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-    @RenderBody()
+    <div id="header">
+        <div class="title">Магазин спорт-товаров</div>
+    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
+    <div id="categories">
+        Позже здесь появятся категории...
+    </div>
+
+    <div id="content">
+        @RenderBody()
+    </div>
+
 </body>
 </html>
