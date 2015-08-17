@@ -61,7 +61,7 @@ textarea {
 }
 
 /* Styles from the book
-----------------------------------------------------------------------*/
+----------------------------------------------------------------------
 BODY { font-family: Cambria, Georgia, "Times New Roman"; margin: 0; }
 DIV#header DIV.title, DIV.item H3, DIV.item H4, DIV.pager A {
 font: bold 1em "Arial Narrow", "Franklin Gothic Medium", Arial;
@@ -82,7 +82,7 @@ DIV.pager A:hover { background-color: Silver; }
 DIV.pager A.selected { background-color: #353535; color: White; }
 
 /*styles for menu links
---------------------------------------------------------------------------------*/
+--------------------------------------------------------------------------------
 
 DIV#categories A.selected { background-color: #666; color: White; }
 DIV#categories A
@@ -94,14 +94,14 @@ border-bottom: 1px solid silver;
 DIV#categories A:hover { background-color: #CCC; }
 DIV#categories A.selected:hover { background-color: #666; }
 /*Add to Cart style
------------------------------------*/
+-----------------------------------
 FORM { margin: 0; padding: 0; }
 DIV.item FORM { float:right; }
 DIV.item INPUT {
 color:White; background-color: #333; border: 1px solid black; cursor:pointer;
 }
 /*Add to Cart buttons style
------------------------------------*/
+-----------------------------------
 H2 { margin-top: 0.3em }
 TFOOT TD { border-top: 1px dotted gray; font-weight: bold; }
 .actionButtons A, INPUT.actionButtons {
@@ -109,3 +109,4 @@ font: .8em Arial; color: White; margin: .5em;
 text-decoration: none; padding: .15em 1.5em .2em 1.5em;
 background-color: #353535; border: 1px solid black;
 }
+*/

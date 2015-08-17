@@ -15,12 +15,15 @@ namespace SportsStore.WebUI.HtmlHelpers
             StringBuilder result = new StringBuilder();
             for (int i = 1; i <= pagingInfo.TotalPages; i++)
             {
-                TagBuilder tag = new TagBuilder("a"); //Construct an <a> tag
-                tag.MergeAttribute("href", pageUrl(i));
-                tag.InnerHtml = i.ToString();
+                TagBuilder linkTag = new TagBuilder("a"); //Construct an <a> tag
+                linkTag.MergeAttribute("href", pageUrl(i));
+                linkTag.InnerHtml = i.ToString();
+
+                TagBuilder listitemTag = new TagBuilder("li");
+                listitemTag.InnerHtml = linkTag.ToString();
                 if (i == pagingInfo.CurrentPage)
-                    tag.AddCssClass("selected");
-                result.Append(tag.ToString());
+                    listitemTag.AddCssClass("active");
+                result.Append(listitemTag.ToString());
             }
             return MvcHtmlString.Create(result.ToString());
         }
