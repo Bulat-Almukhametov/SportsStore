@@ -1,14 +1,15 @@
 ﻿@model SportsStore.Domain.Entities.Product
 
-<div class="item">
+<div class="animated-product thumbnail col-md-4 col-xs-12 pull-left" style="margin: 8pt;">
     <h3>@Model.Name</h3>
     @Model.Description
-    
+    <div class="caption">
     @using(Html.BeginForm("AddToCart", "Cart"))
     {
         @Html.HiddenFor(x => x.ProductID)
         @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-        <input type="submit" class="btn btn-info" value="+ Положить в карзину"/>
+        <input type="submit" class="btn btn-info" value="+ Положить в корзину"/>
     }
-    <h4>@Model.Price.ToString("c")</h4>
+        <h4 class="badge">@Model.Price.ToString("c")</h4>
+        </div>
 </div>

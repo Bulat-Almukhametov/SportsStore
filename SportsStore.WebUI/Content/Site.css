@@ -1,8 +1,44 @@
 ﻿body {
-    font-size: .85em;
+    font-size: 12pt;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     color: #232323;
-    background-color: #fff;
+    background-color: #7fffd4;
+    background-image: url(images/sports.png);
+}
+
+.container {
+    background: #f0f8ff;
+    margin-top: 50pt;
+    margin-bottom: 20pt;
+    border-radius: 10pt;
+    min-height: 500pt;
+}
+
+#cart {
+    
+}
+
+@media screen (min-width: 400px) {
+    .container {
+        width: 100%;
+    }
+}
+.animated-product {
+    visibility: hidden;
+}
+
+.carousel-control {
+    top: 40%;
+    border:3px solid #ffffff;
+    border-radius: 23px;
+    width: 40px;
+    height: 40px;
+}
+
+.carousel-caption {
+    font-size: 10pt;
+    width: 100%;
+    color: cadetblue;
 }
 
 header, footer, nav, section {

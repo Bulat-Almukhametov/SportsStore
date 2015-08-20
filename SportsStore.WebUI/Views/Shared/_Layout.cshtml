@@ -4,26 +4,93 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @RenderSection("styles", required: false)
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/animations.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript">
+        //for header
+        $(function () { $(".carousel").carousel({ interval: 3500, pause: "click" }); });
+        //for slided up products
+        $(window).scroll(function () {
+            $('.animated-product').each(function () {
+                var imagePos = $(this).offset().top;
+
+                var topOfWindow = $(window).scrollTop();
+                if (imagePos < topOfWindow + 400) {
+                    $(this).removeClass("animated-product");
+                    $(this).addClass("slideUp");
+                }
+            });
+        });
+        //for cart
+        jQuery(function ($) {
+            function fixDiv() {
+                var $cache = $('#cart');
+                if ($(window).scrollTop() > 400)
+                    $cache.css({
+                        'position': 'fixed',
+                        'top': '150px',
+                        'right': '130px'
+                    });
+                else
+                    $cache.css({
+                        'position': 'relative',
+                        'top': 'auto',
+                        'right': 'auto'
+                    });
+            }
+            $(window).scroll(fixDiv);
+            fixDiv();
+        });
+    </script>
 </head>
 <body>
-    <div class="page-header" >
-        <h1 class="text-center">Магазин спорт-товаров</h1>
-    </div>
+    <div class="container">
+        <div id="header" class="row page-header carousel">
+            <h1 class="text-center">Магазин спорт-товаров</h1>
 
-    <div id="categories">
-        @{Html.RenderAction("Menu", "Nav");}
-    </div>
+            @* Картинки в карусельке *@
+            <div class="carousel-inner">
+                <div class="active item">
+                    <img src="~/Content/images/барахло.jpg" style="width: 500px; height: 300px;" />
+                    <div class="carousel-caption">
+                        <h4>Широкий выбор</h4>
+                        <p>Всегда доступные изделия в любом количестве прийдутся Вам по вкусу.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="~/Content/images/family.jpg" style="width: 500px; height: 300px;" />
+                    <div class="carousel-caption">
+                        <h4>Для всей семьи</h4>
+                        <p>Здесь Вы найдете товары, которые подойдут абсолютно всем.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="~/Content/images/talants.jpg" style="width: 500px; height: 300px;" />
+                    <div class="carousel-caption">
+                        <h4>Откройте Ваши таланты</h4>
+                        <p>Мы помогаем нашим клиентам достичь их цели - стать активными и получать удовольствие.</p>
+                    </div>
 
-    <div id="content">
-        @RenderBody()
-    </div>
+                </div>
+            </div>
+            @* Навигационные элементы *@
+            <a class="carousel-control left" href="#header" data-slide="prev">&lsaquo;</a>
+            <a class="carousel-control right" href="#header" data-slide="next">&rsaquo;</a>
+        </div>
 
+        <div id="categories" class="row">
+            @{Html.RenderAction("Menu", "Nav");}
+        </div>
+        <div id="content">
+            @RenderBody()
+        </div>
+    </div>
 </body>
 </html>

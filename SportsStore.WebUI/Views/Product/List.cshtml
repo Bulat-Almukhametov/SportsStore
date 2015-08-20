@@ -6,11 +6,13 @@
 
 <h2>Список закупок</h2>
 
+@{Html.RenderAction("Summary", "Cart");}
+
 @foreach (var p in Model.Products)
 {
     Html.RenderPartial("ProductSummary", p);
 }
 
-<ul class="pagination" >
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new {page = x, category = Model.CurrentCategory}))
+<ul class="pagination row col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory }))
 </ul>
