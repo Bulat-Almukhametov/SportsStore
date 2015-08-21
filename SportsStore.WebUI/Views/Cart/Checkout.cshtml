@@ -1,0 +1,37 @@
+﻿@model SportsStore.Domain.Entities.ShippingDetails
+
+@{
+    ViewBag.Title = "Форма доставки";
+}
+<script type="text/javascript">
+    $(function (){$('input').addClass('form-control')});
+</script>
+
+<h2>Заполните форму</h2>
+Пожалуйста, заполните форму необходимыми сведениями, чтобы мы могли доставить Вам ваши вещи!
+<div class="input-group">
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    
+    <h3>Получатель:</h3>
+    <div><span class="input-group-addon">Имя:</span> @Html.EditorFor(x => x.Name)</div>
+    
+    <h3>Адрес</h3>
+    <div><span class="input-group-addon">Строка 1:</span> @Html.EditorFor(x => x.Line1)</div>
+    <div><span class="input-group-addon">Строка 2:</span> @Html.EditorFor(x => x.Line2)</div>
+    <div><span class="input-group-addon">Строка 3:</span> @Html.EditorFor(x => x.Line3)</div>
+    <div><span class="input-group-addon">Город (нас. пункт):</span> @Html.EditorFor(x=>x.City)</div>
+    <div><span class="input-group-addon">Индекс:</span> @Html.EditorFor(x => x.Zip)</div>
+    <div><span class="input-group-addon">Страна: </span>@Html.EditorFor(x=>x.Country)</div>
+    
+    <h3>Дополнительно</h3>
+    <label>
+        @Html.EditorFor(x=>x.GiftWrap)
+        <span class="input-group-addon">Завернуть в подарочную коробку?</span>
+    </label>
+    <p align="center">
+        <input class="btn btn-info" type="submit" value="Сделать заказ"/>
+    </p>
+}
+    </div>

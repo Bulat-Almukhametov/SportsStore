@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -23,7 +24,22 @@ namespace SportsStore.WebUI.Infrastructure
 
         void AddBindings()
         {
+            #region IProductRepository
             ninjectKernel.Bind<IProductRepository>().To<EFProductRepository>();
+            #endregion
+
+            #region e-mail
+            EmailSettings emailSettings = new EmailSettings
+            {
+                WriteAsFile = Boolean.Parse(ConfigurationManager
+                .AppSettings["Email.WriteAsFile"] ?? "false")
+            };
+
+
+            ninjectKernel.Bind<IOrderProcessor>()
+                .To<EmailOrderProcessor>()
+                .WithConstructorArgument("settings", emailSettings);
+            #endregion
         }
 
         protected override IController GetControllerInstance(System.Web.Routing.RequestContext requestContext, Type controllerType)

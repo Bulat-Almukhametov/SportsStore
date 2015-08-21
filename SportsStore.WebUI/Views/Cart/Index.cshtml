@@ -43,6 +43,7 @@
     </tfoot>
 </table>
     </div>
-<p align="center" class="actionButtons">
-    <a href="@Model.ReturnUrl">Вернуться к прежнему списку изделий</a>
+<p align="center" class="btn-group">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Вернуться к прежнему списку изделий</a>
+    @Html.ActionLink("Купить сейчас", "Checkout",null, new{@class="btn btn-success"})
 </p>
