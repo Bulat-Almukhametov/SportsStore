@@ -17,3 +17,6 @@
     width: 80%;
 
 }
+.field-validation-error {
+    margin: 10px;
+}

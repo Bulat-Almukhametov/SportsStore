@@ -4,20 +4,33 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-<link href="~/Content/bootstrap.css" rel="stylesheet"/>
-    
-    <link href="~/Content/Admin.css" rel="stylesheet"/>
-    <link href="~/Content/themes/start/jquery-ui.start.css" rel="stylesheet"/>
-    
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <link href="~/Content/Admin.css" rel="stylesheet" />
+    <link href="~/Content/themes/start/jquery-ui.start.css" rel="stylesheet" />
+
     <script src="~/Scripts/jquery-1.9.1.js"></script>
     <script src="~/Scripts/jquery-ui-1.11.4.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $(function () {
+            var myHandler = function () {
+                $(this).addClass("text-danger");
+                $('body').off('DOMNodeInserted', ".field-validation-error", myHandler);
+
+                $('body').on('DOMNodeInserted', ".field-validation-error", myHandler);
+            };
+            $('body').on('DOMNodeInserted', ".field-validation-error", myHandler);
+        });
+    </script>
 </head>
-    <body>
-        <div id="container">
+<body>
+    <div id="container">
         
         <div id="content">
             @RenderBody()
         </div>
-            </div>
-    </body>
+    </div>
+</body>
 </html>

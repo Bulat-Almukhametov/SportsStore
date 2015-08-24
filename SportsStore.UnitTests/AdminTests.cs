@@ -114,7 +114,31 @@ namespace SportsStore.UnitTests
 
             // Assert
             mock.Verify(m => m.SaveProduct(It.IsAny<Product>()), Times.Never());
-            Assert.IsNotInstanceOfType(result, typeof(ViewResult));
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void Can_Delete_Valid_Products()
+        {
+            // Arrange
+            Product prod = new Product {ProductID = 2, Name = "Test"};
+
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new Product[]
+            {
+                new Product{ProductID = 1, Name = "P1"}, 
+                prod,
+                new Product{ProductID = 3, Name = "P3"}, 
+            }.AsQueryable());
+
+            AdminController target = new AdminController(mock.Object);
+
+            // Act
+            target.Delete(prod.ProductID);
+
+            // Assert
+            //called with the correct Product
+            mock.Verify(m => m.DeleteProduct(prod.ProductID));
         }
     }
 }
