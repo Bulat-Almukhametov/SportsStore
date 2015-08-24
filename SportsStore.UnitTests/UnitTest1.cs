@@ -44,7 +44,7 @@ namespace SportsStore.UnitTests
 
         }
 
-        [TestMethod]
+      [TestMethod]
         public void Can_Generate_Page_Links()
         {
             // Arrange
@@ -61,11 +61,11 @@ namespace SportsStore.UnitTests
             MvcHtmlString result = myHelper.PageLinks(pagingInfo, pageUrlDelegate);
 
             // Assert
-            Assert.AreEqual(result.ToString(), @"<a href=""Page1"">1</a>" +
-                @"<a class=""selected"" href=""Page2"">2</a>" +
-                @"<a href=""Page3"">3</a>");
+            Assert.AreEqual(result.ToString(), @"<li><a href=""Page1"">1</a></li>" +
+                @"<li class=""active""><a href=""Page2"">2</a></li>" +
+                @"<li><a href=""Page3"">3</a></li>");
         }
-
+       
         [TestMethod]
         public void Can_Send_Pagination_View_Model()
         {

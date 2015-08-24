@@ -3,10 +3,47 @@
 <div id="cart" class="panel panel-primary pull-right">
     <div class="panel-body">
         <h4>Ваша корзина</h4>
-        @Model.Lines.Sum(x => x.Quantity) товар(ов)<br/>
-        @Model.ComputeTotalValue().ToString("c")
+        <div id="cartDescription">
+            @Model.Lines.Sum(x => x.Quantity) товар(ов)<br />
+            общая сумма заказа: @Model.ComputeTotalValue().ToString("c")
+
+        </div>
     </div>
-    
+    <link href="~/Content/animations.css" rel="stylesheet" />
+    <p>
+        <img id="cartBox" class="img-rounded pulse" src="~/Content/images/box.gif" />
+    </p>
     <div class="panel-footer">@Html.ActionLink("Посмотреть корзину", "Index",
-    "Cart", new{ returnUrl = Request.Url.PathAndQuery}, null)</div>
+                                  "Cart", new { returnUrl = Request.Url.PathAndQuery }, null)
+    </div>
 </div>
+<script type="text/javascript">
+    $(function () {
+        $("#cart").droppable({
+            drop: function (event, ui) {
+                $(this).slideToggle("slow").delay(700);
+
+                    $.when(function () {
+                    var productId = $(ui.draggable).find("#ProductID").val();
+                    $.ajax({
+                        url: "/Cart/AddToCartAjax",
+                        type: "post",
+                        data: {productID: productId},
+                        datatype: "text",
+                        success: function (data) {
+
+                           setTimeout(function (){$("#cartDescription").html(data)}, 800);
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {alert(xhr.responseText); }
+
+                    });
+
+
+                }()).done(function(result) {
+                        $("#cart").slideToggle("slow");
+                    }
+    );
+            }
+        });
+    });
+</script>

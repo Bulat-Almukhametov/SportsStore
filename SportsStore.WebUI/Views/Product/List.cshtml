@@ -8,10 +8,18 @@
 
 @{Html.RenderAction("Summary", "Cart");}
 
+<link rel="stylesheet" href="/Content/themes/start/jquery-ui.start.css" />
+<script src="~/Scripts/jquery-ui-1.11.4.js"></script>
 @foreach (var p in Model.Products)
 {
     Html.RenderPartial("ProductSummary", p);
 }
+<script> $(".product").draggable({
+     cursor: "move",
+     revert: "invalid",
+     helper: function (event) { return $("<img src='/Content/images/товар.jpg' class='img-circle' style='border: blue dotted 3px;'></img>") }
+     
+ });</script>
 
 <ul class="pagination row col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
     @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory }))

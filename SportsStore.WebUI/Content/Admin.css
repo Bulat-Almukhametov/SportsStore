@@ -1,0 +1,19 @@
+﻿body {
+    background: url(images/clouds.jpg) repeat; 
+}
+#container {
+    width: 95%;
+    margin: auto;
+    margin-top: 80pt;
+    margin-bottom: 8pt;
+    border-radius: 12pt;
+    background-color: white;
+    padding: 10pt;
+}
+
+#content {
+}
+.table {
+    width: 80%;
+
+}

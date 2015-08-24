@@ -1,0 +1,23 @@
+﻿@using System.Collections.Specialized
+@model SportsStore.Domain.Entities.Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-muted">Редактировать: <u>@Model.Name</u></h2>
+
+@using (Html.BeginForm())
+{
+    <section class="panel panel-info">
+        <div class="panel-heading">Информация о товаре:</div>
+
+        <div class="panel-body">
+            @Html.EditorForModel()
+        </div>
+    </section>
+    <script type="text/javascript" language="javascript">$("input[type='text'], textarea").addClass("form-control")</script>
+    <input type="submit" class="btn btn-success" value="Сохранить"/>
+    @Html.ActionLink("Отмена: вернуться к списку", "Index",null,new{@class="btn btn-danger"})
+}

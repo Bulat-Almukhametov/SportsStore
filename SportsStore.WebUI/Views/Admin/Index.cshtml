@@ -1,0 +1,47 @@
+﻿@using SportsStore.Domain.Entities
+@model IEnumerable<SportsStore.Domain.Entities.Product>
+
+@{
+    ViewBag.Title = "Товары в наличии";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="page-header text-muted">Режим администратора: Список товаров.</h2>
+<p>
+    @Html.ActionLink("Добавить", "Create New", null, new{@class="btn btn-success"})
+</p>
+<div class="table-responsive" style="margin: auto;">
+    <table class="table table-striped" style="margin: auto;">
+        <tr>
+            <th style="width: 10pt;">
+                Id
+            </th>
+            <th style="width: 300pt;">
+               Описание
+            </th>
+            <th style="width: 50pt;">
+                Цена
+            </th>
+            <th style="width: 100pt;">Редактировать строку</th>
+        </tr>
+
+        @foreach (Product item in Model)
+        {
+            <tr>
+                <td style="width: 10pt;">
+                    @item.ProductID
+                </td>
+                <td style="width: 300pt;">
+                    @Html.ActionLink(item.Name, "Edit", new{id=item.ProductID})
+                </td>
+                <td style="width: 50pt;">
+                   @item.Price.ToString("c")
+                </td>
+                <td style="width: 100pt; text-align: center;">
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ProductID }, new{ @class = "btn btn-danger", style="margin-bottom: 5pt;" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

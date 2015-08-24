@@ -36,6 +36,20 @@ namespace SportsStore.WebUI.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
+        [HttpPost]
+        public string AddToCartAjax(Cart cart, int productId)
+        {
+            Product product = repository.Products.FirstOrDefault(p => p.ProductID == productId);
+
+            if (product != null)
+            {
+                cart.AddItem(product, 1);
+            }
+            // @Model.Lines.Sum(x => x.Quantity) товар(ов)<br />
+            //@Model.ComputeTotalValue().ToString("c")
+            return String.Format("{0} товар(ов)<br/> общая сумма заказа: {1}", cart.Lines.Sum(x => x.Quantity), cart.ComputeTotalValue().ToString("c"));
+        }
+
         public RedirectToRouteResult RemoveFromCart(Cart cart, int productId, string returnUrl)
         {
             Product product = repository.Products.FirstOrDefault(p => p.ProductID == productId);
@@ -51,6 +65,8 @@ namespace SportsStore.WebUI.Controllers
         {
             return PartialView(cart);
         }
+
+
 
         public ViewResult Checkout()
         {
