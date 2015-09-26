@@ -9,6 +9,7 @@
     border-radius: 12pt;
     background-color: white;
     padding: 10pt;
+    min-height: 600px;
 }
 
 #content {
@@ -19,4 +20,12 @@
 }
 .field-validation-error {
     margin: 10px;
+}
+#loginPanel {
+    max-width: 260px;
+    margin: 12px;
+}
+#adminDesc {
+    font-family: serif;
+    font-size: 12.5pt;
 }

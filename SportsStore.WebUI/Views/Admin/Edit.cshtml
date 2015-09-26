@@ -8,7 +8,7 @@
 
 <h2 class="text-muted">Редактировать: <u>@Model.Name</u></h2>
 
-@using (Html.BeginForm("Edit", "Admin"))
+@using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new {enctype = "multipart/form-data"}))
 {
     <section class="panel panel-info">
         <div class="panel-heading">Информация о товаре:</div>
@@ -16,8 +16,22 @@
         <div class="panel-body">
             @Html.EditorForModel()
         </div>
+        
+        <div class="input-group-addon" style="width: 150px; ">Рисунок</div>
+        <div class="editor-field">
+            @if (Model.ImageData == null)
+            {
+                @:None
+            }
+            else
+            {
+                <img width="150" height="150" class="img-thumbnail" 
+                     src="@Url.Action("GetImage", "Product", new{Model.ProductID})"/>
+            }
+        </div>
+        <div><label for="Image">Загрузить  новое изображение:</label> <input type="file" name="Image" title="Открыть"/></div>
     </section>
-    <script type="text/javascript" language="javascript">$("input[type='text'], textarea").addClass("form-control")</script>
+    
     <input type="submit" class="btn btn-success" value="Сохранить"/>
     @Html.ActionLink("Отмена: вернуться к списку", "Index",null,new{@class="btn btn-danger"})
 }
