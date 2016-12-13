@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web.Mvc;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
@@ -39,6 +40,7 @@ namespace SportsStore.WebUI.Controllers
             return View(model);
         }
 
+       
         public FileContentResult GetImage(int productId)
         {
             Product prod = repository.Products.FirstOrDefault(p => p.ProductID == productId);
@@ -50,6 +52,14 @@ namespace SportsStore.WebUI.Controllers
             {
                 return null;
             }
+        }
+
+        public ActionResult Message()
+        {
+            var myStringBuilder = new StringBuilder();
+
+
+            return Content(myStringBuilder.ToString(), "text/event-stream");
         }
     }
 }
