@@ -20,7 +20,7 @@
                 {
                     controller = "Product",
                     action = "List",
-                    category = link,
+                    category = String.Join("", link.Split(' ').Select(str => str[0].ToString().ToUpper() + str.Substring(1)).ToArray()),
                     page = 1
                 })
             </li>

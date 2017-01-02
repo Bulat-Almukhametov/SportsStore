@@ -170,6 +170,7 @@
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\sports.png" />
     <Content Include="Content\images\talants.jpg" />
+    <Content Include="Content\images\zoom.ico" />
     <Content Include="Content\images\барахло.jpg" />
     <Content Include="Content\images\лого.png" />
     <Content Include="Content\images\товар.jpg" />
@@ -305,7 +306,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>17981</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:54775/</IISUrl>
+          <IISUrl>http://localhost:54776/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

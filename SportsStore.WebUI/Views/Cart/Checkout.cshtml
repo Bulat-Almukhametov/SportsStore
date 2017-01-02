@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Форма доставки";
 }
+<script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 <script type="text/javascript">
     $(function (){$('input').addClass('form-control')});
 </script>
@@ -13,7 +15,7 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary()
-    
+
     <h3>Получатель:</h3>
     <div><span class="input-group-addon">Имя:</span> @Html.EditorFor(x => x.Name)</div>
     

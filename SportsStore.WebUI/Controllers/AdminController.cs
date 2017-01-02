@@ -43,7 +43,7 @@ namespace SportsStore.WebUI.Controllers
                     image.InputStream.Read(product.ImageData, 0, image.ContentLength);
                 }
                 repository.SaveProduct(product);
-                TempData["message"] = string.Format("{0} был сохранен в Базе Данных", product.Name);
+                TempData["message"] = string.Format("\"{0}\" был сохранен в Базе Данных", product.Name);
                 return RedirectToAction("Index");
             }
             else

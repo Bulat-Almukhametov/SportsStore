@@ -6,6 +6,15 @@
     background-image: url(images/sports.png);
 }
 
+@media screen and (min-width: 980px) {
+    .product {
+        height: 375px; 
+    }
+}
+
+#imgContainer {
+    cursor: url(images/zoom.ico), help;
+}
 .product .btn {
     cursor: pointer !important;
 }

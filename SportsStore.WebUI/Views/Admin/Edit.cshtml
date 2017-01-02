@@ -25,13 +25,21 @@
             }
             else
             {
-                <img width="150" height="150" class="img-thumbnail" 
+                <img width="150" height="150" class="img-thumbnail" id="pic"
                      src="@Url.Action("GetImage", "Product", new{Model.ProductID})"/>
             }
         </div>
-        <div><label for="Image">Загрузить  новое изображение:</label> <input type="file" name="Image" title="Открыть"/></div>
+        <div><label for="Image">Загрузить  новое изображение:</label><input type="file" name="Image" title="Открыть"></div>
     </section>
     
     <input type="submit" class="btn btn-success" value="Сохранить"/>
     @Html.ActionLink("Отмена: вернуться к списку", "Index",null,new{@class="btn btn-danger"})
 }
+<script type="text/javascript">
+    $("input[type=file]").on("change", function(evt) {
+        var files = evt.target.files;
+        var fr = new FileReader();
+        fr.onload = function() { $("#pic").attr("src", fr.result); };
+        fr.readAsDataURL(files[0]);
+    });
+</script>

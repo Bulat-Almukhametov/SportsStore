@@ -32,7 +32,10 @@
 </head>
 <body>
     <div id="container">
-        
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success">@TempData["message"]</div>
+        }
         <div id="content">
             @RenderBody()
         </div>

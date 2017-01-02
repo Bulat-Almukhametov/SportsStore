@@ -1,4 +1,5 @@
-﻿@model SportsStore.WebUI.Models.ProductsListViewModel
+﻿@using System.Text
+@model SportsStore.WebUI.Models.ProductsListViewModel
 
 @{
     ViewBag.Title = "Изделия";
@@ -22,5 +23,5 @@
  });</script>
 
 <ul class="pagination row col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x, category = Model.CurrentCategory }))
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { category = Model.CurrentCategory, page = x }))
 </ul>

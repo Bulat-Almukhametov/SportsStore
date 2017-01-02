@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,10 +19,11 @@ namespace SportsStore.WebUI.Controllers
         {
             repository = productRepository;
         }
-
+        
         public ViewResult List(string category, int page = 1)
         {
-                var productsOfSelectedCategory = repository.Products.Where(p => category == null || p.Category == category);
+            var productsOfSelectedCategory = repository.Products.Where(p => 
+                category == null || p.Category.Replace(" ", "") == category);
 
             ProductsListViewModel model = new ProductsListViewModel
             {

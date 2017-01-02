@@ -3,11 +3,12 @@
 @model SportsStore.Domain.Entities.Product
 
 <div class="product animated-product thumbnail col-md-4 col-xs-12 pull-left ui-widget" 
-    style="margin: 8pt; ">
+    style="margin: 8pt;">
     <h3>@Model.Name</h3>
     @Model.Description
-    <div class="caption" style="background-image: url( @if(Model.ImageData!=null){@Url.Action("GetImage", "Product", new{Model.ProductID})} ); background-size: cover;" >
-    @using(Html.BeginForm("AddToCart", "Cart"))
+    <div class="caption"  >
+        <div id="imgContainer" style="height: 64px; margin-left: 15%; margin-right: 15%; margin-bottom: 10px; background-repeat: no-repeat;  background-image: url( @if(Model.ImageData!=null){@Url.Action("GetImage", "Product", new{Model.ProductID})} ); background-size: contain;"></div>
+        @using(Html.BeginForm("AddToCart", "Cart"))
     {
         @Html.HiddenFor(x => x.ProductID)
         @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
