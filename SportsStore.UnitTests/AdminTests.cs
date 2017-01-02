@@ -93,7 +93,7 @@ namespace SportsStore.UnitTests
             Product product = new Product{Name = "Test"};
 
             // Act
-            ActionResult result = target.Edit(product.ProductID);
+            ActionResult result = target.Edit(product, null);
 
             // Assert
             mock.Verify(m => m.SaveProduct(product));
